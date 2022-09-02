@@ -5,7 +5,7 @@ const safeDogBreeds = ["Alaskan Husky", "Harrier", "English Springer Spaniel"];
 const riskyCities = ["London", "Manchester", "Nottingham"];
 let safeBreeds = [];
 
-async function getQuote(id) {
+export async function getQuote(id) {
   let params = Number(id);
   let sqlString =
     "SELECT * FROM users INNER JOIN information ON users.email = information.email WHERE users.id = $1";
