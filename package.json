@@ -9,6 +9,7 @@
     "dbcreatetable": "node -r dotenv/config ./db/scripts/createTable.js",
     "dbpopulatetable": "node -r dotenv/config ./db/scripts/populateTable.js",
     "dbdeletetable": "node -r dotenv/config ./db/scripts/deleteTable.js"
+
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
