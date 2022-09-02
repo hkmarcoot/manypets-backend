@@ -10,10 +10,9 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  body = req.body;
+  let body = req.body;
   const user = await insertUser(body);
   res.json({ success: true, message: `user added`, payload: user });
 });
-
 
 export default router;
