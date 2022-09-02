@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 
 // Add this in when merging models
-// import { getPrice, postAPet } from "../models/users.js"; 
+import { postAPet } from "../models/quotes.js";
 
 //done
 router.get("/:id", async (req, res) => {
@@ -13,8 +13,10 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   // Before submitting the pet, trim any whitespace from each property
-  const body = req.body;
-  const pets = body.payload; //pets is an array of objects - each object is 1 pet
+  const pets = req.body;
+  console.log(pets);
+  //pets is an array of objects - each object is 1 pet
+  /*
   for (let i = 0; i < pets.length; i++) {
     // check breed is valid, if it 
     const results = isBreedValid(pets[i].species, pets[i].breed)
@@ -29,25 +31,26 @@ router.post("/", async (req, res) => {
       return;
     }
   }
+  */
   for (let i = 0; i < pets.length; i++) {
-    postAPet(pets[i])
-    res.json({ success: true, message: "Pet(s) submitted successfully."})
+    postAPet(pets[i]);
+    res.json({ success: true, message: "Pet(s) submitted successfully." });
   }
 });
 
 async function isBreedValid(species, breed) {
   let api;
-  if (species === 'cat') {
-    api = 'https://api.thecatapi.com/v1/breeds'
-  } else if (species === 'dog') {
-    api = 'https://api.thedogapi.com/v1/breeds'
+  if (species === "cat") {
+    api = "https://api.thecatapi.com/v1/breeds";
+  } else if (species === "dog") {
+    api = "https://api.thedogapi.com/v1/breeds";
   }
 
-  console.log(api + '/search?q=' + breed.replace(' ', '_'));
-  const response = await fetch(api + '/search?q=' + breed.replace(' ', '_'));
+  console.log(api + "/search?q=" + breed.replace(" ", "_"));
+  const response = await fetch(api + "/search?q=" + breed.replace(" ", "_"));
   const payload = await response.json();
 
-  return payload.length // update this later -> if length is 0, say no breed found, if length is > 1, say be more specific
+  return payload.length; // update this later -> if length is 0, say no breed found, if length is > 1, say be more specific
 }
 
 export default router;
