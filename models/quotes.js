@@ -1,6 +1,5 @@
 import query from "../db/index.js";
 
-
 //done
 export async function postAPet(information) {
   const data = await query(
@@ -29,12 +28,10 @@ VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *;
     ]
   );
   return data.rows;
-};
+}
 
-export async function postAUser(user){
-  const data = await query(
-    `INSERT INTO `
-  )
+export async function postAUser(user) {
+  const data = await query(`INSERT INTO `);
 }
 
 //specify the structure of the object
@@ -43,7 +40,7 @@ export async function postAUser(user){
 
 const safeCatBreeds = ["Abyssinian", "Forest Cat", "Maine Coone"];
 const safeDogBreeds = ["Alaskan Husky", "Harrier", "English Springer Spaniel"];
-const riskyCities = ["London", "Manchester", "Nottingham"];
+const riskyRegions = ["London", "Greater Manchester", "North West"];
 let safeBreeds = [];
 
 export async function getQuote(id) {
@@ -63,10 +60,10 @@ export async function getQuote(id) {
     const { species, breed, age, address } = data[i];
     if (species === "cat") {
       safeBreeds = safeCatBreeds;
-    } else if(species === "dog"){
+    } else if (species === "dog") {
       safeBreeds = safeDogBreeds;
-    } else{
-        return "Error: Invalid Species"
+    } else {
+      return "Error: Invalid Species";
     }
 
     //Validate breed here
@@ -76,9 +73,9 @@ export async function getQuote(id) {
     }
 
     //Validate postcode, get the city the postcode belongs top:
-    let city = "Cardiff"; //results of get request to postcode API go here
+    //results of get request to postcode API go here
 
-    if (riskyCities.includes(city)) {
+    if (riskyRegions.includes(address)) {
       runningtotal = runningtotal * 1.15;
     }
 
@@ -127,4 +124,3 @@ export async function getQuote(id) {
 
 let test = await getQuote(1);
 console.log(test);
-
