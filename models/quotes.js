@@ -20,12 +20,9 @@ export async function getQuote(id) {
     let runningtotal = basePrice;
 
     const { species, breed, age, address } = data[i];
-    let petApi = "";
     if (species === "cat") {
-      petApi = "https://api.thecatapi.com/v1/breeds";
       safeBreeds = safeCatBreeds;
     } else if(species === "dog"){
-      petApi = "https://api.thedogapi.com/v1/breeds";
       safeBreeds = safeDogBreeds;
     } else{
         return "Error: Invalid Species"
