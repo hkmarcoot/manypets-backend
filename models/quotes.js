@@ -102,12 +102,7 @@ export async function getQuote(id) {
 
   totalPrice = +totalPrice.toFixed(2);
 
-  let responseObject = {
-    status: 200,
-    payload: totalPrice,
-  };
-
-  return responseObject;
+  return totalPrice;
 }
 
 // async function test(id){

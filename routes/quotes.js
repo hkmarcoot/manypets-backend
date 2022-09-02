@@ -2,12 +2,13 @@ import express from "express";
 const router = express.Router();
 
 // Add this in when merging models
-import { postAPet } from "../models/quotes.js";
+import { postAPet, getQuote } from "../models/quotes.js";
+
 
 //done
 router.get("/:id", async (req, res) => {
   const id = Number(req.params.id);
-  const price = await getPrice(id); // check the name when merging
+  const price = await getQuote(id); // check the name when merging
   res.json({ success: true, payload: price });
 });
 
