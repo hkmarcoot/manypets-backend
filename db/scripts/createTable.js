@@ -9,7 +9,7 @@ import query from "../index.js";
 
 const sqlString = `CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, email TEXT, price INTEGER)`;
 
-const sqlString2 = `CREATE TABLE IF NOT EXISTS information (id SERIAL PRIMARY KEY, email TEXT, dogorcat TEXT, gender TEXT, petsname: TEXT, breed TEXT, species TEXT, age INTEGER, address TEXT)`;
+const sqlString2 = `CREATE TABLE IF NOT EXISTS information (id SERIAL PRIMARY KEY, email TEXT, dogorcat TEXT, gender TEXT, petsname TEXT, breed TEXT, species TEXT, age INTEGER, address TEXT)`;
 
 async function createTable() {
   const res = await query(sqlString);

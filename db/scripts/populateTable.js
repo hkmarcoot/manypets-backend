@@ -33,3 +33,6 @@ async function populateTable2() {
     console.log(res);
   }
 }
+
+populateTable();
+populateTable2();
