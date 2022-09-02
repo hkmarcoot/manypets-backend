@@ -81,3 +81,13 @@ Workload division:
 Routes - Create above routes for POST and GET requests - Populating both users & information table with dummy data -
 
 - Validaiton
+
+
+
+- - - - - - - - - - - 
+Models function plans:
+
+export async function postAPet() {
+
+    const data = await query
+}
