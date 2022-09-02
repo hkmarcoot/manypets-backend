@@ -5,9 +5,10 @@ Input: JSON:
     "status": 200
     "payload": [
         {
+            petId:
             name:
             gender: 
-            email: 
+            email: sfdkushdgsdh@gmail.com
             species: Cat
             breedType: Cross/Mixed/Pedigree
             breed: Tabby
@@ -17,6 +18,13 @@ Input: JSON:
         }
     ]
     }
+
+    users: [
+        {
+        userId: 1
+        email: sfdkushdgsdh@gmail.com
+        }
+    ]
 
 
 Base price: £120 a year
@@ -36,6 +44,30 @@ If Valid:
     Check if cirt is in our riskyCitys array:
     If in array:
         Apply 15% price increase on the cover
+
+Age: Add 5% for every year up to 5 yrs, add 10% for every year up to 10%
+
+    -   Get age in months
+    -   divide by 12, Math.floor to get age in years
+    -   IF age <= 5, priceIncrease = age*5%
+    -   IF  5 < age <= 10, priceIncrease = 25 + (age-5)*10
+    -   IF age > 10, priceIncrease = 75%
+
+TOTAL prices for each pet quote 
+
+Multipet: 
+
+-   Bool
+-   If TRUE, -10% from total price 
+-   ELSE nothing 
+
+Routes: 
+    -   /quotes  // POST request endpoint to send pet info (data) to db
+
+    -   /quotes/id  // GET request endpoint - get all the associated pets returned, calculates price for all insurance
+
+
+
 
 
 Final: Price

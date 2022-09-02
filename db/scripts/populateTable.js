@@ -18,17 +18,17 @@ async function populateTable() {
 async function populateTable2() {
   for (let i = 0; i < information.length; i++) {
     const email = information[i].email;
-    const dogorcat = information[i].dogorcat;
+    const species = information[i].species;
     const gender = information[i].gender;
     const petsname = information[i].petsname;
+    const breedType = information[i].breedType;
     const breed = information[i].breed;
-    const species = information[i].species;
     const age = information[i].age;
     const address = information[i].address;
 
     const res = await query(
-      `INSERT INTO information (email, dogorcat, gender, petsname, breed, species, age, address) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
-      [email, dogorcat, gender, petsname, breed, species, age, address]
+      `INSERT INTO information (email, species, gender, petsname, breedType, breed, age, address) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
+      [email, species, gender, petsname, breedType, breed, age, address]
     );
     console.log(res);
   }
